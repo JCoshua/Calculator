@@ -59,6 +59,7 @@ namespace Calculator
                 else
                 {
                     Console.WriteLine("Please input a valid number.");
+                    Console.ReadKey(true);
                     Console.Clear();
                 }
             }
@@ -120,7 +121,7 @@ namespace Calculator
                 else
                 {
                     Console.WriteLine("Please Input a Valid Paramater.");
-                    Console.ReadKey();
+                    Console.ReadKey(true);
                     Console.Clear();
                 }
             }
@@ -135,7 +136,7 @@ namespace Calculator
             float secondNumber = NumberInput("second");
             float result = Operator(firstNumber, secondNumber);
             Console.WriteLine(result);
-            Console.ReadKey();
+            Console.ReadKey(true);
             Console.Clear();
 
             //Checks if User wants to Contiue, Clear, or Exit
@@ -161,7 +162,7 @@ namespace Calculator
                         secondNumber = NumberInput("second");
                         result = Operator(firstNumber, secondNumber);
                         Console.WriteLine(result);
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                         Console.Clear();
                         invalidInput = false;
                     }
@@ -173,7 +174,7 @@ namespace Calculator
                         secondNumber = NumberInput("second");
                         result = Operator(firstNumber, secondNumber);
                         Console.WriteLine(result);
-                        Console.ReadKey();
+                        Console.ReadKey(true);
                         Console.Clear();
                         invalidInput = false;
                     }
@@ -186,7 +187,8 @@ namespace Calculator
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Input");
+                        Console.WriteLine("Invalid Input");\
+                        Console.ReadKey(true);
                         Console.Clear();
                     }
 
