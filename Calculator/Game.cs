@@ -9,21 +9,25 @@ namespace Calculator
         //Player wants to continue
         bool calculating = true;
 
+        //Addition Function
         float Addition(float firstNumber, float secondNumber)
         {
             return firstNumber + secondNumber;
         }
 
+        //Subtration Function
         float Subtration(float firstNumber, float secondNumber)
         {
             return firstNumber - secondNumber;
         }
 
+        //Multiplication Function
         float Multipication(float firstNumber, float secondNumber)
         {
             return firstNumber * secondNumber;
         }
 
+        //Division
         float Divison(float firstNumber, float secondNumber)
         {
             return firstNumber / secondNumber;
@@ -32,7 +36,7 @@ namespace Calculator
         /// <summary>
         /// Function to get number values
         /// </summary>
-        /// <param name="currentNumberEntry">Enter the word value</param>
+        /// <param name="currentNumberEntry">Enter the number as a word</param>
         /// <returns></returns>
         float NumberInput(string currentNumberEntry)
         {
@@ -42,6 +46,8 @@ namespace Calculator
                 Console.WriteLine("Please enter the " + currentNumberEntry + " number here.");
                 Console.Write(">");
                 string input = Console.ReadLine();
+
+                //Checking if entry was a valid number
                 if (Single.TryParse(input, out float result))
                 {
                     invalidInput = false;
@@ -74,6 +80,8 @@ namespace Calculator
                 Console.WriteLine("4. Division");
                 Console.Write(">");
                 string operation = Console.ReadLine();
+
+                //If Addition was chosen
                 if (operation == "1" || operation.ToLower() == "addition")
                 {
                     result = Addition(firstNumber, secondNumber);
@@ -82,6 +90,7 @@ namespace Calculator
                     return result;
                 }
 
+                //If Subtration was Chosen
                 else if (operation == "2" || operation.ToLower() == "subtraction")
                 {
                     result = Subtration(firstNumber, secondNumber);
@@ -90,7 +99,8 @@ namespace Calculator
                     return result;
                 }
 
-                else if (operation == "3" || operation.ToLower() == "mulptipication")
+                //If Multiplication was Chosen
+                else if (operation == "3" || operation.ToLower() == "multipication")
                 {
                     result = Multipication(firstNumber, secondNumber);
                     invalidInput = false;
@@ -98,6 +108,7 @@ namespace Calculator
                     return result;
                 }
 
+                //If Division was Chosen
                 else if (operation == "4" || operation.ToLower() == "divison")
                 {
                     result = Divison(firstNumber, secondNumber);
@@ -116,14 +127,18 @@ namespace Calculator
          return result;
         }
 
+        //Condeses the Calculation into a single function
         void Calculator()
         {
+            //Does first calculation
             float firstNumber = NumberInput("first");
             float secondNumber = NumberInput("second");
             float result = Operator(firstNumber, secondNumber);
             Console.WriteLine(result);
             Console.ReadKey();
             Console.Clear();
+
+            //Checks if User wants to Contiue, Clear, or Exit
             while (calculating == true)
             {
             bool invalidInput = true;
@@ -138,6 +153,8 @@ namespace Calculator
                     Console.Write(">");
                     string operation = Console.ReadLine();
                     Console.Clear();
+
+                    //If user wants to use previous value
                     if (operation == "1" || operation.ToLower() == "continue")
                     {
                         firstNumber = result;
@@ -149,6 +166,7 @@ namespace Calculator
                         invalidInput = false;
                     }
 
+                    //User uses new values
                     else if (operation == "2" || operation.ToLower() == "clear")
                     {
                         firstNumber = NumberInput("first");
@@ -160,6 +178,7 @@ namespace Calculator
                         invalidInput = false;
                     }
 
+                    //User Leaves
                     else if (operation == "3" || operation.ToLower() == "exit")
                     {
                         invalidInput = false;
