@@ -5,9 +5,9 @@ using System.Text;
 namespace Calculator
 {
     class Game
-    {   //Defining the Numbers
-        float firstNumber = 0.0f;
-        float secondNumber = 0.0f;
+    {
+        //Player wants to continue
+        bool calculating = true;
 
         float Addition(float firstNumber, float secondNumber)
         {
@@ -109,6 +109,7 @@ namespace Calculator
                 else
                 {
                     Console.WriteLine("Please Input a Valid Paramater.");
+                    Console.ReadKey();
                     Console.Clear();
                 }
             }
@@ -119,11 +120,63 @@ namespace Calculator
         {
             float firstNumber = NumberInput("first");
             float secondNumber = NumberInput("second");
-            float result = Operator(firstNumber,secondNumber);
+            float result = Operator(firstNumber, secondNumber);
             Console.WriteLine(result);
             Console.ReadKey();
-            
+            Console.Clear();
+            while (calculating == true)
+            {
+            bool invalidInput = true;
+                while (invalidInput == true)
+                {
+                    //Continue with Result
+                    Console.WriteLine("1. Continue");
+                    //Clear and enter new Numbers
+                    Console.WriteLine("2. Clear");
+                    //Exit
+                    Console.WriteLine("3. Exit");
+                    Console.Write(">");
+                    string operation = Console.ReadLine();
+                    Console.Clear();
+                    if (operation == "1" || operation.ToLower() == "continue")
+                    {
+                        firstNumber = result;
+                        secondNumber = NumberInput("second");
+                        result = Operator(firstNumber, secondNumber);
+                        Console.WriteLine(result);
+                        Console.ReadKey();
+                        Console.Clear();
+                        invalidInput = false;
+                    }
+
+                    else if (operation == "2" || operation.ToLower() == "clear")
+                    {
+                        firstNumber = NumberInput("first");
+                        secondNumber = NumberInput("second");
+                        result = Operator(firstNumber, secondNumber);
+                        Console.WriteLine(result);
+                        Console.ReadKey();
+                        Console.Clear();
+                        invalidInput = false;
+                    }
+
+                    else if (operation == "3" || operation.ToLower() == "exit")
+                    {
+                        invalidInput = false;
+                        calculating = false;
+                    }
+                    else
+                    {
+                        Console.WriteLine("Invalid Input");
+                        Console.Clear();
+                    }
+
+                   
+                }
+
+            }
         }
+        
         public void Run()
         {
             Calculator();
