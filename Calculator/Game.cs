@@ -187,7 +187,7 @@ namespace Calculator
                     }
                     else
                     {
-                        Console.WriteLine("Invalid Input");\
+                        Console.WriteLine("Invalid Input");
                         Console.ReadKey(true);
                         Console.Clear();
                     }
